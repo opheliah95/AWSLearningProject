@@ -2,14 +2,12 @@ version: 1
 frontend:
   phases:
     # my build commands
-     preBuild:
-      commands: []
-     build:
+    build:
       commands: []
   artifacts:
     # build artifacts
-    baseDirectory: build
+    baseDirectory: /
     files:
       - '**/*'
   cache:
-    paths: .
+    paths: []
