@@ -23,6 +23,36 @@
             margin-left: 20px;
         }
     </style>
+
+    <!--Call API function-->
+    <script>
+        // define the callAPI function that takes a first name and last name as parameters
+        var callAPI = (firstName,lastName)=>{
+            // create a process obj
+            const process = require('process');
+            // load remote env variable
+            const API = process.env.API;
+
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // pass json info to content-type header
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"first_name":firstName,"last_name":lastName});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch(API, requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+    </script>
 </header>
 
 <body>
