@@ -3,7 +3,9 @@ frontend:
   phases:
     # my build commands
     build:
-      commands: []
+      commands:
+        - npm run build:$API
+        - echo "API_PATH=$API" >> backend/.env 
   artifacts:
     # build artifacts
     baseDirectory: /
