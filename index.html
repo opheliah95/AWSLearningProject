@@ -29,6 +29,8 @@
         // define the callAPI function that takes a first name and last name as parameters
         var callAPI = (firstName,lastName)=>{
 
+            // load node process module
+            const process = require('process');
             // load remote env variable
             const API = process.env.API;
 
