@@ -2,9 +2,13 @@ version: 1
 frontend:
   phases:
     # my build commands
+    prebuild:
+      commands:
+        - npm install
     build:
       commands:
         - npm run build:$API
+        - mkdir backend && touch backend/.env
         - echo "API_PATH=$API" >> backend/.env 
   artifacts:
     # build artifacts
